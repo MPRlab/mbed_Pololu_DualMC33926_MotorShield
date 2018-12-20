@@ -2,6 +2,8 @@
  * This file has been modified from https://github.com/pololu/dual-mc33926-motor-shield/blob/master/DualMC33926MotorShield.h
  * 
  * Modifying Author: Christopher Bove cpbove@wpi.edu
+ * Additions made by Sean O'Neil stoneil@wpi.edu
+
 */
 
 #ifndef DualMC33926MotorShield_h
