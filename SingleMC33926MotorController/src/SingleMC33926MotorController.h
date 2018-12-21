@@ -15,7 +15,7 @@ class SingleMC33926MotorController
 
 public:
 	// CONSTRUCTOR - 
-	SingleMC33926MotorController(PinName DIR, PinName PWM, PinName FB, PinName nD2, PinName nSF);
+	SingleMC33926MotorController(PinName DIR, PinName PWM, PinName FB, PinName nD2, PinName nSF, bool flipDirection);
 
 	// DESTRUCTOR
 	~SingleMC33926MotorController();
@@ -33,6 +33,8 @@ private:
 	void setSpeed(float speed, bool coast);
 
 	// Private members
+	bool _flipDirection = false;
+
 	PinName _DIR;
     PinName _PWM;
     PinName _FB;

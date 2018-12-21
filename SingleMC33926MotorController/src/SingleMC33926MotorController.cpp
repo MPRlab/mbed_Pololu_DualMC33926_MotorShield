@@ -7,13 +7,15 @@
 
 #include "SingleMC33926MotorController.h"
 
-SingleMC33926MotorController::SingleMC33926MotorController(PinName DIR, PinName PWM, PinName FB, PinName nD2, PinName nSF){
+SingleMC33926MotorController::SingleMC33926MotorController(PinName DIR, PinName PWM, PinName FB, PinName nD2, PinName nSF, bool flipDirection){
 	_DIR = DIR;
     _PWM = PWM;
     _FB = FB;
 
 	_nD2 = nD2; // enable line
 	_nSF = nSF; // fault input line. 
+
+	_flipDirection = flipDirection;
 
     _DirOut = new DigitalOut(_DIR);
     _nD2Out = new PwmOut(_nD2);
@@ -48,7 +50,7 @@ void SingleMC33926MotorController::setSpeedBrake(float speed){
 }
 
 void SingleMC33926MotorController::setSpeed(float speed, bool coast){
-	unsigned char reverse = 0;
+	unsigned int reverse = 0;
   
   	// clamp and correct the speed for Pwm.write()
 	if (speed < 0)
@@ -58,6 +60,12 @@ void SingleMC33926MotorController::setSpeed(float speed, bool coast){
 	}
 	if (speed > 1)  // Max PWM dutycycle
 	speed = 1;
+
+	// Check for flipped direction
+	if (_flipDirection){
+		reverse = !reverse;
+	}
+
 
 	// check for coasting or braking to drive the PWM pin or the enable pin
 	if(coast){
