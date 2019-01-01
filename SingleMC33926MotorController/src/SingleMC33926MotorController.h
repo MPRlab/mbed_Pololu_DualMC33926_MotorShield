@@ -27,6 +27,7 @@ public:
 	void setSpeedBrake(float speed); // PWMs the PWM pin for a brake drive mode
 	float getCurrent(); // return the current in Amps
 	bool hasFault(); // detect if there is a fault with the motor controller
+	bool isFlipped(); // returns the _flipDirection value
 
 private: 
 	// Private methods

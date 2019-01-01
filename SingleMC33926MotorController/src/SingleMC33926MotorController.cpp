@@ -95,3 +95,7 @@ bool SingleMC33926MotorController::hasFault()
   else
     return true;
 }
+
+bool SingleMC33926MotorController::isFlipped(){
+	return _flipDirection;
+}
