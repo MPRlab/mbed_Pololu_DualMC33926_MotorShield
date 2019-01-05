@@ -19,7 +19,9 @@ SingleMC33926MotorController::SingleMC33926MotorController(PinName DIR, PinName 
 
     _DirOut = new DigitalOut(_DIR);
     _nD2Out = new PwmOut(_nD2);
+    _nD2Out->period_us(50); // 1 / 20,000 = 50 us
     _PwmOut = new PwmOut(_PWM);
+    _PwmOut->period_us(50); // 1 / 20,000 = 50 us
     _FbAnalogIn = new AnalogIn(_FB);
     _nSfDigitalIn = new DigitalIn(_nSF); // TODO make this InterruptIn
 }
