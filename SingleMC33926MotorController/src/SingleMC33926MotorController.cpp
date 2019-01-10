@@ -40,7 +40,8 @@ void SingleMC33926MotorController::enable(){
 }
 
 void SingleMC33926MotorController::disable(){
-	_nD2Out->write(0.0f);	
+	_nD2Out->write(0.0f);
+	_PwmOut->write(0.0f);	
 }
 
 void SingleMC33926MotorController::setSpeedCoast(float speed){
